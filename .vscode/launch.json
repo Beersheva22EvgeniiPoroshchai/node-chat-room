@@ -11,7 +11,11 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/src/chat-app.mjs"
+            "program": "${workspaceFolder}/src/chat-app.mjs",
+            "env": {
+                "ATLAS_URI_CHAT":"mongodb+srv://root:12345.com@cluster0.d19qlu2.mongodb.net/chatroom?retryWrites=true&w=majority",   //chatroom:dbase name
+                "JWT_SECRET_CHAT":"jwt_secret"
+            }
         }
     ]
 }

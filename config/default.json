@@ -1,0 +1,11 @@
+{
+    "mongodb": {
+        "env_uri": "ATLAS_URI_CHAT",
+        "db": "accounts"
+}, 
+    "jwt": {
+        "env_secret": "JWT_SECRET_CHAT",
+        "expiresIn": "30 days"
+
+}
+}

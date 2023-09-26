@@ -2,9 +2,14 @@ import crypto from 'crypto';
 import express from 'express';
 import expressWs from "express-ws";
 import ChatRoom from './service/ChatRoom.mjs';
+import { users } from './routes/users.mjs';
+import bodyParser from 'body-parser'
+
 
 const app = express();
+app.use(bodyParser.json())
 expressWs(app);  
+
 const chatRoom = new ChatRoom();
 app.get('/contacts', (req, res) => {
     res.send(chatRoom.getAllClients())
@@ -25,7 +30,15 @@ app.ws('/contacts/websocket/:clientName', (ws,req) => {
     processConnection(clientName, ws);   
     })
 
-app.listen(8040);
+
+   
+
+app.listen(8080, () => {
+    console.log('server is listening on port 8080');
+});
+
+ app.use('/users', users);
+
 function processConnection(clientName, ws) {
     const connectionId = crypto.randomUUID();
         chatRoom.addConnection(clientName, connectionId, ws);
